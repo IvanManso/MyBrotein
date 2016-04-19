@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/IvanManso/MyBrotein/issues"
   },
-  "homepage": "https://github.com/IvanManso/MyBrotein#readme"
+  "homepage": "https://github.com/IvanManso/MyBrotein#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-less": "^1.2.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0"
+  }
 }
