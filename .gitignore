@@ -1,0 +1,8 @@
+# Node modules
+node_modules/
+
+# API DOC
+apidoc/
+
+# Bower components
+bower_components/
