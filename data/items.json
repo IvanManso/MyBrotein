@@ -1,35 +1,33 @@
-{
-    "items": [{
-        "title": "Whey Protein ON",
-        "category": "Protein",
-        "subcategory": "Whey",
-        "image": "/images/on.jpg",
-        "description": "Best protein of the year",
-        "price": "55€",
-        "amount": "10"
-    }, {
-        "title": "Whey Protein Scitec",
-        "category": "Protein",
-        "subcategory": "Whey",
-        "image": "/images/scitec.jpg",
-        "description": "A great protein",
-        "price": "45€",
-        "amount": "10"
-    }, {
-        "title": "Whey Protein BSN",
-        "category": "Protein",
-        "subcategory": "Whey",
-        "image": "http://placehold.it/350x150/FFC107/000000",
-        "description": "A great mixed protein",
-        "price": "38€",
-        "amount": "10"
-    }, {
-        "title": "Whey Protein Arnold",
-        "category": "Protein",
-        "subcategory": "Whey",
-        "image": "http://placehold.it/350x150/FFC107/000000",
-        "description": "The champions protein",
-        "price": "47€",
-        "amount": "10"
-    }]
-}
+[{
+    "title": "Whey Protein ON",
+    "category": "Protein",
+    "subcategory": "Whey",
+    "image": "/images/on.jpg",
+    "description": "Best protein of the year",
+    "price": "55€",
+    "amount": "10"
+}, {
+    "title": "Whey Protein Scitec",
+    "category": "Protein",
+    "subcategory": "Whey",
+    "image": "/images/scitec.jpg",
+    "description": "A great protein",
+    "price": "45€",
+    "amount": "10"
+}, {
+    "title": "Whey Protein BSN",
+    "category": "Protein",
+    "subcategory": "Whey",
+    "image": "http://placehold.it/350x150/FFC107/000000",
+    "description": "A great mixed protein",
+    "price": "38€",
+    "amount": "10"
+}, {
+    "title": "Whey Protein Arnold",
+    "category": "Protein",
+    "subcategory": "Whey",
+    "image": "http://placehold.it/350x150/FFC107/000000",
+    "description": "The champions protein",
+    "price": "47€",
+    "amount": "10"
+}]

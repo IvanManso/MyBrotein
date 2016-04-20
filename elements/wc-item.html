@@ -2,34 +2,38 @@
     <template>
         <style>
         .marco {
+            width: 25%;
             margin: 50px;
-            padding: 70px;
+            padding: 50px;
             text-align: center;
             border-style: solid;
-            border-radius: 5px;
-            background-color: darkblue;
+            border-radius: 3px;
+            background-color: red;
         }
-
         </style>
+        <!--         <template is="dom-repeat" items="{{items}}" as="item">
+         -->
         <div class="marco">
             Item:
-            <div id="film"> {{film}}</div>
-            <hr>
-            <div id="session">{{session}}</button>
-            </div>
+            <template is="dom-repeat" items="{{items}}" as="item">
+                <div id="title">{{item.title}}</div>
+                <div id="image"><img src="{{item.image}}"></img>
+                </div>
+                <div id="description">{{item.description}}</div>
+                <div id="price">{{item.price}}</div>
+                <div id="amount">{{item.amount}}</div>
+            </template>
         </div>
+        <!--       </template>
+     -->
     </template>
     <script>
     (function() {
         Ticket = Polymer({
             is: "wc-item",
             properties: {
-                film: {
-                    type: String,
-                    value: ""
-                },
-                session: {
-                    type: String,
+                items: {
+                    type: Object,
                     value: ""
                 }
             }

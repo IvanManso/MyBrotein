@@ -1,0 +1,31 @@
+<dom-module id="wc-subitem">
+    <template>
+        <iron-ajax id="ajax" auto url="../data/items.json" handle-as="json" on-response="load" debounce-duration="300">
+        </iron-ajax>
+    </template>
+    <script>
+    (function() {
+        var items;
+        Polymer({
+            is: "wc-subitem",
+            properties: {
+                items: {
+                    type: Array,
+                    value: function() {
+                        return [];
+                    },
+                    notify: true,
+                }
+            },
+            load: function(data) {
+                console.log("Estoy en el load");
+                this.items = data.detail.response;
+                console.log("Las items completas son ", this.items);
+                items = this.items;
+                console.log("Ahora items tiene", items);
+                this.notifyPath("items", this.items);
+            }
+        });
+    })();
+    </script>
+    <dom-module>

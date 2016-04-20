@@ -2,6 +2,7 @@
     <template>
         <iron-ajax id="ajax" auto url="../data/subcategory.json" handle-as="json" on-response="load" debounce-duration="300">
         </iron-ajax>
+        <wc-subitem items="{{items}}"></wc-subitem>
     </template>
     <script>
     (function() {
@@ -10,6 +11,13 @@
             is: "wc-subcategory",
             properties: {
                 subcategory: {
+                    type: Array,
+                    value: function() {
+                        return [];
+                    },
+                    notify: true,
+                },
+                items: {
                     type: Array,
                     value: function() {
                         return [];
@@ -24,8 +32,9 @@
                 subcategory = this.subcategory;
                 console.log("Ahora subcategory tiene", subcategory);
                 this.notifyPath("subcategory", this.subcategory);
-
-
+            },
+            ready: function(){
+                items = this.items;
             }
         });
     })();
