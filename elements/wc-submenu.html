@@ -10,6 +10,8 @@
             background-color: lightgreen;
         }
         </style>
+        <iron-ajax id="ajax" auto url="../data/items.json" handle-as="json" on-response="load" debounce-duration="300">
+        </iron-ajax>
         <h1>Subcategory:</h1>
         <!-- <template is="dom-repeat" items="{{subcategory}}" as="subcat"> -->
         <wc-subcategory id="subcategory" subcategory="{{subcategory}}">
@@ -25,7 +27,6 @@
                 background-color: lightgreen;
             }
             </style>
-
             <div class="marc">
                 {{subcat.name}}
                 <wc-item items="{{items}}"></wc-item>
@@ -43,8 +44,20 @@
                     value: function() {
                         return [];
                     }
-                },
+                }
+            },
+            ready: function() {
+                console.log("Estoy en el submenu con el item", items);
+            },
+            load: function(data) {
+                console.log("Estoy en el load");
+                this.items = data.detail.response;
+                console.log("Las items completas son ", this.items);
+                items = this.items;
+                console.log("Ahora items tiene", items);
+                this.notifyPath("items", this.items);
             }
+
         });
     })();
     </script>

@@ -2,8 +2,8 @@
     <template>
         <style>
         .marco {
-            width: 25%;
-            margin: 50px;
+            /* width: 25%;
+            margin: 50px; */
             padding: 50px;
             text-align: center;
             border-style: solid;
@@ -36,6 +36,9 @@
                     type: Object,
                     value: ""
                 }
+            },
+            ready: function(){
+                console.log("Estoy en wc-item con el item", items);
             }
         });
     })();
