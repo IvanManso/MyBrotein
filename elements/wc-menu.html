@@ -8,10 +8,10 @@
         <div class="main">
             <div class="horizontal menu">
                 <paper-menu>
-                    <paper-item>Protein</paper-item>
-                    <paper-item>Carbohydrates</paper-item>
-                    <paper-item>Creatine</paper-item>
-                    <paper-item>Amino Acids</paper-item>
+                    <paper-item on-click="onWcCategory">Protein</paper-item>
+                    <paper-item on-click="onWcCategory">Carbohydrates</paper-item>
+                    <paper-item on-click="onWcCategory">Creatine</paper-item>
+                    <paper-item on-click="onWcCategory">Amino Acids</paper-item>
                 </paper-menu>
             </div>
             <wc-submenu></wc-submenu>
@@ -21,15 +21,13 @@
     (function() {
         Polymer({
             is: "wc-menu",
-            /*ready: function() {
-                var film = this.$.film;
-                film.textContent = "American Psycho";
-                var horario = this.$.horario;
-                horario.textContent = "18:00";
-                var pago = this.$.pago;
-                pago.textContent = "Pagar";
-                var price = this.$.price;
-                price.textContent = "6€";*/
+            onWcCategory: function(e) {
+                console.log("Estoy clickando la categoria");
+                var categ = Polymer.dom(e).localTarget.textContent;
+                console.log("La categoría de dicho botón es",  categ);
+               e.stopPropagation();
+               //this.fire("wc-category", { category: categ});
+            },
             properties: {
 
             },

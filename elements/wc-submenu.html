@@ -1,46 +1,47 @@
 <dom-module id="wc-submenu">
     <template>
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            </ol>
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img src="/images/on.jpg" alt="Chania">
-                </div>
-                <div class="item">
-                    <img src="/images/scitec.jpg" alt="Chania">
-                </div>
-            </div>
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
+        <style>
+        .marco {
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            border-style: solid;
+            border-radius: 8px;
+            background-color: lightgreen;
+        }
+        </style>
+        <h1>Subcategory:</h1>
+            <!-- <template is="dom-repeat" items="{{subcategory}}" as="subcat"> -->
+            <wc-subcategory id="subcategory" subcategory="{{subcategory}}">
+            </wc-subcategory>
+            <template is="dom-repeat" items="{{subcategory}}" as="subcat">
+                <style>
+                .marc {
+                    margin: 20px;
+                    padding: 20px;
+                    text-align: center;
+                    border-style: solid;
+                    border-radius: 8px;
+                    background-color: lightgreen;
+                }
+                </style>
+                <div class="marc">
+                {{subcat.name}}</div>
+            </template>
+            <!--     </template> -->
     </template>
     <script>
     (function() {
         Polymer({
             is: "wc-submenu",
-            /*ready: function() {
-                var film = this.$.film;
-                film.textContent = "American Psycho";
-                var horario = this.$.horario;
-                horario.textContent = "18:00";
-                var pago = this.$.pago;
-                pago.textContent = "Pagar";
-                var price = this.$.price;
-                price.textContent = "6€";*/
             properties: {
-
-            },
+                subcategory: {
+                    type: Array,
+                    value: function() {
+                        return [];
+                    }
+                },
+            }
         });
     })();
     </script>

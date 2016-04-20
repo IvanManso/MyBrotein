@@ -1,0 +1,33 @@
+<dom-module id="wc-subcategory">
+    <template>
+        <iron-ajax id="ajax" auto url="../data/subcategory.json" handle-as="json" on-response="load" debounce-duration="300">
+        </iron-ajax>
+    </template>
+    <script>
+    (function() {
+        var subcategory;
+        Polymer({
+            is: "wc-subcategory",
+            properties: {
+                subcategory: {
+                    type: Array,
+                    value: function() {
+                        return [];
+                    },
+                    notify: true,
+                }
+            },
+            load: function(data) {
+                console.log("Estoy en el load");
+                this.subcategory = data.detail.response;
+                console.log("Las subcategorías completas son ", this.subcategory);
+                subcategory = this.subcategory;
+                console.log("Ahora subcategory tiene", subcategory);
+                this.notifyPath("subcategory", this.subcategory);
+
+
+            }
+        });
+    })();
+    </script>
+    <dom-module>

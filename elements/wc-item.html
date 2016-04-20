@@ -1,0 +1,39 @@
+<dom-module id="wc-item">
+    <template>
+        <style>
+        .marco {
+            margin: 50px;
+            padding: 70px;
+            text-align: center;
+            border-style: solid;
+            border-radius: 5px;
+            background-color: darkblue;
+        }
+
+        </style>
+        <div class="marco">
+            Item:
+            <div id="film"> {{film}}</div>
+            <hr>
+            <div id="session">{{session}}</button>
+            </div>
+        </div>
+    </template>
+    <script>
+    (function() {
+        Ticket = Polymer({
+            is: "wc-item",
+            properties: {
+                film: {
+                    type: String,
+                    value: ""
+                },
+                session: {
+                    type: String,
+                    value: ""
+                }
+            }
+        });
+    })();
+    </script>
+</dom-module>
