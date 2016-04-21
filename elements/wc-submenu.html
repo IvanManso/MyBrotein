@@ -7,7 +7,18 @@
             text-align: center;
             border-style: solid;
             border-radius: 8px;
-            background-color: lightgreen;
+            background-image: lightgreen;
+        }
+        .btn{
+            display: block;
+            margin-left: 10px;
+        }
+        .horizontal{
+            border: solid;
+            border-radius: 5px;
+        }
+        .menu{
+            float: left;
         }
         </style>
         <iron-ajax id="ajax" auto url="../data/items.json" handle-as="json" on-response="load" debounce-duration="300">
@@ -16,33 +27,33 @@
             <div class="horizontal menu">
                 <paper-menu>
                     <paper-submenu>
-                        <button on-click="onWcCategory" value="Protein">Protein</button>
+                        <button on-click="onWcCategory" value="Protein" type="button" class="btn btn-primary">Protein</button>
                         <paper-menu class="menu-content">
-                            <button on-click="onWcSubcategory">Whey</button>
-                            <button on-click="onWcSubcategory">Hydrolized</button>
-                            <button on-click="onWcSubcategory">Isolate</button>
-                            <button on-click="onWcSubcategory">Concentrate</button>
+                            <button on-click="onWcSubcategory" type="button" class="btn btn-info">Whey</button>
+                            <button on-click="onWcSubcategory" type="button" class="btn btn-info">Hydrolized</button>
+                            <button on-click="onWcSubcategory" type="button" class="btn btn-info">Isolate</button>
+                            <button on-click="onWcSubcategory" type="button" class="btn btn-info">Concentrate</button>
                         </paper-menu>
-                        <button on-click="onWcCategory" value="Carbohydrates">Carbohydrates</button>
+                        <button on-click="onWcCategory" value="Carbohydrates" type="button" class="btn btn-primary">Carbohydrates</button>
                         <paper-menu class="menu-content">
-                            <button on-click="onWcSubcategory">Oats</button>
-                            <button on-click="onWcSubcategory">Vitargo</button>
-                            <button on-click="onWcSubcategory">Amilopectine</button>
+                            <button on-click="onWcSubcategory" type="button" class="btn btn-info">Oats</button>
+                            <button on-click="onWcSubcategory" type="button" class="btn btn-info">Vitargo</button>
+                            <button on-click="onWcSubcategory" type="button" class="btn btn-info">Amilopectine</button>
                         </paper-menu>
-                        <button on-click="onWcCategory" value="Creatine">Creatine</button>
+                        <button on-click="onWcCategory" value="Creatine" type="button" class="btn btn-primary">Creatine</button>
                         <paper-menu class="menu-content">
-                            <button on-click="onWcSubcategory">Monohydrated</button>
-                            <button on-click="onWcSubcategory">Alkalyne</button>
+                            <button on-click="onWcSubcategory" type="button" class="btn btn-info">Monohydrated</button>
+                            <button on-click="onWcSubcategory" type="button" class="btn btn-info">Alkalyne</button>
                         </paper-menu>
-                        <button on-click="onWcCategory" value="AminoAcids">AminoAcids</button>
+                        <button on-click="onWcCategory" value="AminoAcids" type="button" class="btn btn-primary">AminoAcids</button>
                         <paper-menu class="menu-content">
-                            <button on-click="onWcSubcategory">BCAAS</button>
-                            <button on-click="onWcSubcategory">Glutamine</button>
+                            <button on-click="onWcSubcategory" type="button" class="btn btn-info">BCAAS</button>
+                            <button on-click="onWcSubcategory" type="button" class="btn btn-info">Glutamine</button>
                         </paper-menu>
                 </paper-menu>
             </div>
             <!--             <div if="{{subcategory.category(categ)}}">
- -->
+ -->        <div class="menu">
             <h1>Subcategory:</h1>
             <!-- <template is="dom-repeat" items="{{subcategory}}" as="subcat"> -->
             <wc-subcategory id="subcategory" subcategory="{{subcategory}}">
@@ -65,6 +76,7 @@
             </template>
             <!--     </template> -->
     </template>
+    </div>
     <script>
     (function() {
         Polymer({
@@ -147,7 +159,7 @@
                      return sub.category === categ;
                  }); Otra manera */
 
-                this.listas = lista;
+                this.listas = [" "];
                 this.listItems = listItem;
                 console.log("LA LSITA DE SUBS FINAL ES", this.listas);
                 console.log("LA LISTA DE ITEMS FINAL ES", this.listItems);

@@ -9,6 +9,7 @@
             border-style: solid;
             border-radius: 3px;
             background-color: red;
+            display: inline-block;
         }
         </style>
         <!--         <template is="dom-repeat" items="{{items}}" as="item">
@@ -22,6 +23,7 @@
                 <div id="description">{{item.description}}</div>
                 <div id="price">Price:{{item.price}}</div>
                 <div id="amount">Amount:{{item.amount}}</div>
+                <button type="button" class="btn btn-success">Buy</button>
                 <hr>
             </template>
         </div>
@@ -37,7 +39,7 @@
                     type: Array
                 }
             },
-            ready: function(){
+            ready: function() {
                 console.log("Estoy en WC-ITEM");
             }
         });
