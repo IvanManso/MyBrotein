@@ -31,6 +31,22 @@
     "price": "47€",
     "amount": "10"
 }, {
+    "title": "Hidro Whey",
+    "category": "Protein",
+    "subcategory": "Hydrolized",
+    "image": "/images/hydro.jpg",
+    "description": "A great mixed protein",
+    "price": "58€",
+    "amount": "10"
+},{
+    "title": "Iso Whey",
+    "category": "Protein",
+    "subcategory": "Isolate",
+    "image": "/images/iso.jpg",
+    "description": "A great mixed protein",
+    "price": "48€",
+    "amount": "10"
+},{
     "title": "Vit0Best Oats",
     "category": "Carbohydrates",
     "subcategory": "Oats",

@@ -15,10 +15,30 @@
         <div class="main">
             <div class="horizontal menu">
                 <paper-menu>
-                    <button on-click="onWcCategory" value="Protein">Protein</button>
-                    <button on-click="onWcCategory" value="Carbohydrates">Carbohydrates</button>
-                    <button on-click="onWcCategory" value="Creatine">Creatine</button>
-                    <button on-click="onWcCategory" value="AminoAcids">AminoAcids</button>
+                    <paper-submenu>
+                        <button on-click="onWcCategory" value="Protein">Protein</button>
+                        <paper-menu class="menu-content">
+                            <button on-click="onWcSubcategory">Whey</button>
+                            <button on-click="onWcSubcategory">Hydrolized</button>
+                            <button on-click="onWcSubcategory">Isolate</button>
+                            <button on-click="onWcSubcategory">Concentrate</button>
+                        </paper-menu>
+                        <button on-click="onWcCategory" value="Carbohydrates">Carbohydrates</button>
+                        <paper-menu class="menu-content">
+                            <button on-click="onWcSubcategory">Oats</button>
+                            <button on-click="onWcSubcategory">Vitargo</button>
+                            <button on-click="onWcSubcategory">Amilopectine</button>
+                        </paper-menu>
+                        <button on-click="onWcCategory" value="Creatine">Creatine</button>
+                        <paper-menu class="menu-content">
+                            <button on-click="onWcSubcategory">Monohydrated</button>
+                            <button on-click="onWcSubcategory">Alkalyne</button>
+                        </paper-menu>
+                        <button on-click="onWcCategory" value="AminoAcids">AminoAcids</button>
+                        <paper-menu class="menu-content">
+                            <button on-click="onWcSubcategory">BCAAS</button>
+                            <button on-click="onWcSubcategory">Glutamine</button>
+                        </paper-menu>
                 </paper-menu>
             </div>
             <!--             <div if="{{subcategory.category(categ)}}">
@@ -64,6 +84,32 @@
                     type: Array,
                     notify: true
                 }
+            },
+            onWcSubcategory: function(e) {
+                console.log("Estoy en la SUBCATEGORÍA");
+                var lista = [];
+                var listItem = [];
+                console.log("Estoy clickando la categoria");
+                var subcateg = Polymer.dom(e).localTarget.textContent;
+                lista = [subcateg];
+                console.log("La categoría de dicho botón es", subcateg);
+
+                for (var j = 0; j < items.length; j++) {
+                    console.log("ESTOY EN EL FOR DE LOS ITEMS");
+                    if (subcateg === items[j].subcategory) {
+                        console.log("HE PASADO EL FILTRO DE LOS ITEMS, SOY EL ITEM", items[j]);
+                        listItem.push(items[j]);
+                        console.log("AAAAAAAAAAHORAAAAAAA LISTITEM TIENEEEEE", listItem);
+                    } else {
+                        console.log("El item no coincide");
+                    }
+                }
+                this.listas = lista;
+                this.listItems = listItem;
+                console.log("LA LSITA DE SUBS FINAL ES", this.listas);
+                console.log("LA LISTA DE ITEMS FINAL ES", this.listItems);
+                this.notifyPath("this.listas", this.listas);
+                this.notifyPath("this.listItems", this.listItems);
             },
             onWcCategory: function(e) {
                 var lista = [];
