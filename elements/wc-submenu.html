@@ -15,10 +15,10 @@
         <div class="main">
             <div class="horizontal menu">
                 <paper-menu>
-                    <button on-click="onWcCategory" value="Protein">Protein</paper-item>
-                        <button on-click="onWcCategory" value="Carbohydrates">Carbohydrates</paper-item>
-                            <button on-click="onWcCategory" value="Creatine">Creatine</paper-item>
-                                <button on-click="onWcCategory" value="Amino Acids">Amino Acids</paper-item>
+                    <button on-click="onWcCategory" value="Protein">Protein</button>
+                        <button on-click="onWcCategory" value="Carbohydrates">Carbohydrates</button>
+                            <button on-click="onWcCategory" value="Creatine">Creatine</button>
+                                <button on-click="onWcCategory" value="AminoAcids">AminoAcids</button>
                 </paper-menu>
             </div>
             <!--             <div if="{{subcategory.category(categ)}}">
@@ -28,7 +28,6 @@
             <wc-subcategory id="subcategory" subcategory="{{subcategory}}">
             </wc-subcategory>
             <template is="dom-repeat" items="{{listas}}" as="lista">
-                {{listas}}
                 <style>
                 .marc {
                     margin: 20px;
@@ -40,7 +39,8 @@
                 }
                 </style>
                 <div class="marc">
-                    <wc-item items="{{items}}"></wc-item>
+                    <h2>{{lista.name}}</h2>
+                    <wc-item listItems="{{items}}"></wc-item>
                 </div>
             </template>
             <!--     </template> -->
@@ -67,7 +67,7 @@
             },
             onWcCategory: function(e) {
                 var lista = [];
-                //var listItem = [];
+                var listItem = [];
                 console.log("Estoy clickando la categoria");
                 var categ = Polymer.dom(e).localTarget.value;
                 console.log("La categoría de dicho botón es", categ);
@@ -82,24 +82,31 @@
                         console.log("He pasado el filtro de la subcategoría");
                         lista.push(listSub[i]);
                         console.log("LA LONGITUD DE LOS ITEMS ES", items.length);
-                       /* for (var j = 0; j < items.length; j++) {
-                            console.log("ESTOY EN EL FOR DE LOS ITEMS");
-                            if (listSub[i].name === items[i].subcategory) {
-                                console.log("HE PASADO EL FILTRO DE LOS ITEMS, SOY EL ITEM", items[i]);
-                                listItem.push(items[i]);
-                            }
-                        }*/
+                        for (var j = 0; j < items.length; j++) {
+                             console.log("ESTOY EN EL FOR DE LOS ITEMS");
+                             if (listSub[i].name === items[i].subcategory) {
+                                 console.log("HE PASADO EL FILTRO DE LOS ITEMS, SOY EL ITEM", items[i]);
+                                 listItem.push(items[i]);
+                             }
+                         }
                     } else {
                         console.log("No coincide");
                     }
-                    this.listas = lista;
-                    //this.listItems = listItem;
-                    console.log("La lista final es", this.listas);
-                    //console.log("LA LISTA DE ITEMS FINAL ES", this.listItems);
-                    console.log("ROCIO", this.listas.length);
-                    console.log("Un nombre de la lista es", this.listas[0]);
-                    this.notifyPath("this.listas", this.listas);
                 }
+
+               /* listSub.filter(function(sub){
+                    return sub.category === categ;
+                }); Otra manera */
+
+                this.listas = lista;
+                this.listItems = listItem;
+                console.log("La lista final es", this.listas);
+                console.log("LA LISTA DE ITEMS FINAL ES", this.listItems);
+                console.log("ROCIO", this.listas.length);
+                console.log("Un elemento de la lista es", this.listas[1].name);
+                console.log("");
+                this.notifyPath("this.listas", this.listas);
+
 
             },
             ready: function() {
