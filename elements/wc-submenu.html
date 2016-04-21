@@ -16,18 +16,19 @@
             <div class="horizontal menu">
                 <paper-menu>
                     <button on-click="onWcCategory" value="Protein">Protein</paper-item>
-                    <button on-click="onWcCategory"value="Carbohydrates">Carbohydrates</paper-item>
-                    <button on-click="onWcCategory"
-                    value="Creatine">Creatine</paper-item>
-                    <button on-click="onWcCategory" value="Amino Acids">Amino Acids</paper-item>
+                        <button on-click="onWcCategory" value="Carbohydrates">Carbohydrates</paper-item>
+                            <button on-click="onWcCategory" value="Creatine">Creatine</paper-item>
+                                <button on-click="onWcCategory" value="Amino Acids">Amino Acids</paper-item>
                 </paper-menu>
             </div>
-<!--             <div if="{{subcategory.category(categ)}}">
- -->            <h1>Subcategory:</h1>
+            <!--             <div if="{{subcategory.category(categ)}}">
+ -->
+            <h1>Subcategory:</h1>
             <!-- <template is="dom-repeat" items="{{subcategory}}" as="subcat"> -->
             <wc-subcategory id="subcategory" subcategory="{{subcategory}}">
             </wc-subcategory>
-            <template is="dom-repeat" items="{{subcategory}}" as="subcat">
+            <template is="dom-repeat" items="{{listas}}" as="lista">
+                {{listas}}
                 <style>
                 .marc {
                     margin: 20px;
@@ -39,7 +40,6 @@
                 }
                 </style>
                 <div class="marc">
-                    {{subcat.name}}
                     <wc-item items="{{items}}"></wc-item>
                 </div>
             </template>
@@ -55,14 +55,52 @@
                     value: function() {
                         return [];
                     }
+                },
+                listas: {
+                    type: Array,
+                    notify: true
+                },
+                listItems: {
+                    type: Array,
+                    notify: true
                 }
             },
             onWcCategory: function(e) {
+                var lista = [];
+                //var listItem = [];
                 console.log("Estoy clickando la categoria");
                 var categ = Polymer.dom(e).localTarget.value;
                 console.log("La categoría de dicho botón es", categ);
-                e.stopPropagation();
-                //this.fire("wc-category", { category: categ});
+                var listSub = this.querySelector("#subcategory").subcategory;
+                console.log("Intentado acceder a las subcategorías de una categoría", listSub);
+                //e.stopPropagation();
+                for (var i = 0; i < listSub.length; i++) {
+                    console.log("La longitud de las subcategorías es", listSub.length);
+                    console.log("La subcategorías son", listSub);
+                    console.log("Los items son", this.items);
+                    if (listSub[i].category === categ) {
+                        console.log("He pasado el filtro de la subcategoría");
+                        lista.push(listSub[i]);
+                        console.log("LA LONGITUD DE LOS ITEMS ES", items.length);
+                       /* for (var j = 0; j < items.length; j++) {
+                            console.log("ESTOY EN EL FOR DE LOS ITEMS");
+                            if (listSub[i].name === items[i].subcategory) {
+                                console.log("HE PASADO EL FILTRO DE LOS ITEMS, SOY EL ITEM", items[i]);
+                                listItem.push(items[i]);
+                            }
+                        }*/
+                    } else {
+                        console.log("No coincide");
+                    }
+                    this.listas = lista;
+                    //this.listItems = listItem;
+                    console.log("La lista final es", this.listas);
+                    //console.log("LA LISTA DE ITEMS FINAL ES", this.listItems);
+                    console.log("ROCIO", this.listas.length);
+                    console.log("Un nombre de la lista es", this.listas[0]);
+                    this.notifyPath("this.listas", this.listas);
+                }
+
             },
             ready: function() {
                 console.log("Estoy en el submenu con el item", items);

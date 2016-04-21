@@ -1,6 +1,6 @@
 <dom-module id="wc-subcategory">
     <template>
-        <iron-ajax id="ajax" auto url="../data/subcategory.json" handle-as="json" on-response="load" debounce-duration="300">
+        <iron-ajax id="ajax" auto url="../data/subcategory.json" handle-as="json" on-response="loadSub" debounce-duration="300">
         </iron-ajax>
 <!--         <wc-subitem items="{{items}}"></wc-subitem>
      -->    </template>
@@ -25,7 +25,7 @@
                     notify: true,
                 }
             },
-            load: function(data) {
+            loadSub: function(data) {
                 console.log("Estoy en el load");
                 this.subcategory = data.detail.response;
                 console.log("Las subcategorías completas son ", this.subcategory);
