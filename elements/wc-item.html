@@ -37,10 +37,10 @@
         </paper-dialog>
         <paper-dialog id="cart">
             <div>
-                <wc-cart item="{{item}}"></wc-cart>
+                <wc-cart item="{{item}}" items="{{items}}"></wc-cart>
                 <div>
                     <button type="button" class="btn btn-success" on-click="back">Continue Shopping</button>
-                    <button type="button" class="btn btn-success" on-click="dialog">Finish</button>
+                    <button type="button" class="btn btn-success" on-click="finish">Finish</button>
                 </div>
             </div>
         </paper-dialog>
@@ -62,10 +62,10 @@
     </template>
     <script>
     (function() {
-         Ticket = Polymer({
+        Ticket = Polymer({
             is: "wc-item",
             properties: {
-                items: {
+                itemCart: {
                     type: Array
                 },
                 item: {
@@ -75,6 +75,10 @@
             },
             ready: function() {
                 console.log("Estoy en WC-ITEM");
+            },
+            finish: function(){
+                this.item = 0;
+                this.$.cart.close();
             },
             back: function() {
                 this.$.cart.close();
@@ -88,6 +92,10 @@
                     this.item = this.item + parseInt(Polymer.dom(e).localTarget.value);
                     console.log("EL ITEM QUE TENGO ES", this.item);
                     this.notifyPath("item", this.item);
+                    /* var pri = parseInt(Polymer.dom(e).localTarget.value);
+                     this.items = pri;
+                     this.notifyPath("items", this.items);*/
+
 
                 } else {
                     this.$.dialog.open();

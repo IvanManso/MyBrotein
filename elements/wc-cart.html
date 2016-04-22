@@ -2,6 +2,11 @@
     <template item="{{item}}">
         <p>Total price:</p>
         <p>{{item}}€</p>
+        <!-- <template items="{{items}}">
+            <div>
+                {{items}}
+            </div>
+        </template> -->
     </template>
     <script>
     (function() {
@@ -11,7 +16,11 @@
                 item: {
                     type: Number,
                     notify: true
-                }
+                }/*,
+                items: {
+                    type: String,
+                    notify: true
+                }*/
             },
         });
     })();
