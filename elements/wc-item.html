@@ -35,6 +35,15 @@
         <paper-dialog id="sign">
             <p>Register</p>
         </paper-dialog>
+        <paper-dialog id="cart">
+            <div>
+                <wc-cart item="{{item}}"></wc-cart>
+                <div>
+                    <button type="button" class="btn btn-success" on-click="back">Continue Shopping</button>
+                    <button type="button" class="btn btn-success" on-click="dialog">Finish</button>
+                </div>
+            </div>
+        </paper-dialog>
         <div class="marco">
             <h1>Items:</h1>
             <template is="dom-repeat" items="{{items}}" as="item">
@@ -44,7 +53,7 @@
                 <div id="description">{{item.description}}</div>
                 <div id="price">Price:{{item.price}}</div>
                 <div id="amount">Amount:{{item.amount}}</div>
-                <button type="button" class="btn btn-success" on-click="dialog">Buy</button>
+                <button type="button" value="{{item.price}}" class="btn btn-success" on-click="dialog">Buy</button>
                 <hr>
             </template>
         </div>
@@ -53,19 +62,37 @@
     </template>
     <script>
     (function() {
-        Ticket = Polymer({
+         Ticket = Polymer({
             is: "wc-item",
             properties: {
                 items: {
                     type: Array
+                },
+                item: {
+                    type: Number,
+                    value: 0
                 }
             },
             ready: function() {
                 console.log("Estoy en WC-ITEM");
             },
-            dialog: function() {
-                this.$.dialog.open();
-                this.$.dialog.modal = true;
+            back: function() {
+                this.$.cart.close();
+
+            },
+            dialog: function(e) {
+                if (localStorage.getItem("username") !== null) {
+                    this.$.cart.open();
+                    this.$.cart.modal = true;
+                    console.log("VOY A COMPROBAR LA VARIABLE ITEM");
+                    this.item = this.item + parseInt(Polymer.dom(e).localTarget.value);
+                    console.log("EL ITEM QUE TENGO ES", this.item);
+                    this.notifyPath("item", this.item);
+
+                } else {
+                    this.$.dialog.open();
+                    this.$.dialog.modal = true;
+                }
             },
             log: function() {
                 this.$.log.open();
@@ -84,10 +111,7 @@
             submit: function() {
                 var nombre = document.querySelector("#username").value;
                 var clave = document.querySelector("#password").value;
-                console.log("EL USERNAME Y CLAVE ESSSSSSSSSSSSSSSSSSSSSSSS", nombre, clave);
-                console.log("EL USERS ANTES DEL FOR ES", this.users);
                 for (var i = 0; i < this.users.length; i++) {
-                    console.log("Voy a realizar el for");
                     if (this.users[i].username === nombre) {
                         console.log("El nombre de usuario es correcto");
                         if (this.users[i].password === clave) {

@@ -4,7 +4,7 @@
     "subcategory": "Whey",
     "image": "/images/on.jpg",
     "description": "Best protein of the year",
-    "price": "55€",
+    "price": 55,
     "amount": "10"
 }, {
     "title": "Whey Protein Scitec",
@@ -12,7 +12,7 @@
     "subcategory": "Whey",
     "image": "/images/scitec.jpg",
     "description": "A great protein",
-    "price": "45€",
+    "price": 45,
     "amount": "10"
 }, {
     "title": "Whey Protein BSN",
@@ -20,7 +20,7 @@
     "subcategory": "Whey",
     "image": "/images/bsn.jpg",
     "description": "A great mixed protein",
-    "price": "38€",
+    "price": 38,
     "amount": "10"
 }, {
     "title": "Whey Protein Arnold",
@@ -28,7 +28,7 @@
     "subcategory": "Whey",
     "image": "/images/arnold.jpg",
     "description": "The champions protein",
-    "price": "47€",
+    "price": 47,
     "amount": "10"
 }, {
     "title": "Hidro Whey",
@@ -36,7 +36,7 @@
     "subcategory": "Hydrolized",
     "image": "/images/hydro.jpg",
     "description": "A great mixed protein",
-    "price": "58€",
+    "price": 58,
     "amount": "10"
 },{
     "title": "Iso Whey",
@@ -44,7 +44,7 @@
     "subcategory": "Isolate",
     "image": "/images/iso.jpg",
     "description": "A great mixed protein",
-    "price": "48€",
+    "price": 48,
     "amount": "10"
 },{
     "title": "Vit0Best Oats",
@@ -52,7 +52,7 @@
     "subcategory": "Oats",
     "image": "/images/oats.jpg",
     "description": "A great VIT0BEST oats",
-    "price": "5€",
+    "price": 5,
     "amount": "10"
 }, {
     "title": "Vitargo ON",
@@ -60,7 +60,7 @@
     "subcategory": "Vitargo",
     "image": "",
     "description": "A great mixed Vitargo",
-    "price": "38€",
+    "price": 38,
     "amount": "10"
 }, {
     "title": "Amilopectine BSN",
@@ -68,7 +68,7 @@
     "subcategory": "Amilopectine",
     "image": "",
     "description": "A great mixed of Amilopectine",
-    "price": "38€",
+    "price": 38,
     "amount": "10"
 }, {
     "title": "Kre-Alkalyne",
@@ -76,6 +76,6 @@
     "subcategory": "Alkalyne",
     "image": "",
     "description": "A great mixed creatine",
-    "price": "38€",
+    "price": 38,
     "amount": "10"
 }]

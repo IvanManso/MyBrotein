@@ -1,0 +1,19 @@
+<dom-module id="wc-cart">
+    <template item="{{item}}">
+        <p>Total price:</p>
+        <p>{{item}}€</p>
+    </template>
+    <script>
+    (function() {
+        Polymer({
+            is: "wc-cart",
+            properties: {
+                item: {
+                    type: Number,
+                    notify: true
+                }
+            },
+        });
+    })();
+    </script>
+    <dom-module>
