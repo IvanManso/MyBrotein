@@ -14,6 +14,8 @@
         </style>
         <!--         <template is="dom-repeat" items="{{items}}" as="item">
          -->
+        <iron-ajax id="ajax" auto url="../data/users.json" handle-as="json" on-response="load" debounce-duration="300">
+        </iron-ajax>
         <paper-dialog id="dialog">
             <h2>Welcome to myBrotein</h2>
             <p>Please Log In or Sign Up if you haven´t got an account</p>
@@ -25,8 +27,8 @@
         <paper-dialog id="log">
             <p>Please enter your credentials</p>
             <div>
-                <paper-input label="Username" type="text"></paper-input>
-                <paper-input label="Password" type="password"></paper-input>
+                <paper-input id="username" label="Username" type="text"></paper-input>
+                <paper-input id="password" label="Password" type="password"></paper-input>
                 <button class="btn btn-secondary" dialog-confirm on-tap="submit">Submit</button>
             </div>
         </paper-dialog>
@@ -73,10 +75,34 @@
                 this.$.sign.open();
                 this.$.sign.modal = true;
             },
-            submit: function(){
+            load: function(data) {
+                console.log("Estoy en el load");
+                this.users = data.detail.response;
+                console.log("La lista de users completa es ", this.users);
+                this.notifyPath("users", this.users);
+            },
+            submit: function() {
+                var nombre = document.querySelector("#username").value;
+                var clave = document.querySelector("#password").value;
+                console.log("EL USERNAME Y CLAVE ESSSSSSSSSSSSSSSSSSSSSSSS", nombre, clave);
+                console.log("EL USERS ANTES DEL FOR ES", this.users);
+                for (var i = 0; i < this.users.length; i++) {
+                    console.log("Voy a realizar el for");
+                    if (this.users[i].username === nombre) {
+                        console.log("El nombre de usuario es correcto");
+                        if (this.users[i].password === clave) {
+                            console.log("La contraseña es correcta");
+                            localStorage.setItem("username", nombre);
+                            alert("Usuario y contraseña correctos");
+                        } else {
+                            alert("Contraseña incorrecta");
+                        }
+                    } else {
+                        alert("Usuario incorrecto");
+                    }
+                }
                 this.$.log.close();
                 this.$.dialog.close();
-                alert("Welcome back");
             }
         });
     })();
